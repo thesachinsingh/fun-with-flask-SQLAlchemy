@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+</head>
+<body>
+
+
+    <h1>Students list</h1>
+    {% if all_list %}
+    <table id = "all-students">
+        <tr>
+        <th>SNo</th>
+        <th>Roll Number</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Actions</th>
+        </tr>
+
+        {% for x in all_list %}
+        <tr>
+        <td>{{ loop.index }}</td>
+        <td><a href="/student/{{ x.student_id }}">{{ x.roll_number }}</a></td>
+        <td>{{ x.first_name }}</td>
+        <td>{{ x.last_name }}</td>
+        <td>
+        <a href="/student/{{ x.student_id }}/update" type="button">Update</a>
+        <a href="/student/{{ x.student_id }}/delete" type="button">Delete</a>
+        </td>
+        </tr>
+        {% endfor %}
+        
+    </table>
+    {% else %}
+    <p>No student found. Add the students now!</p>
+    {% endif %} 
+    <a href="/student/create">+ Add Student</a>
+
+
+
+
+</body>
+</html>
